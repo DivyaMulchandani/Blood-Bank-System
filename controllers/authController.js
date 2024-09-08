@@ -47,6 +47,15 @@ const registerController = async (req, res) => {
 //login call back
 const loginController = async (req, res) => {
   try {
+    console.log("Login Request Body: ", req.body);
+
+    const jwtSecret = process.env.JWT_SECRET;
+    if (!jwtSecret) {
+      return res.status(500).send({
+        success: false,
+        message: "JWT Secret is not defined",
+      });
+    }
     const exisitingUser = await userModel.findOne({
       email: req.body.email,
     });
@@ -56,20 +65,27 @@ const loginController = async (req, res) => {
         message: "User not found",
       });
     }
-    //check roles
     if (exisitingUser.role !== req.body.role) {
-      return res.status(500).send({
+      return res.status(403).send({
         success: false,
         message: "Invalid role",
       });
     }
+
+    //check roles
+    // if (exisitingUser.role !== req.body.role) {
+    //   return res.status(500).send({
+    //     success: false,
+    //     message: "Invalid role",
+    //   });
+    // }
     //compare password
     const comparePassword = await bcrypt.compare(
       req.body.password,
       exisitingUser.password
     );
     if (!comparePassword) {
-      return res.status(500).send({
+      return res.status(401).send({
         success: false,
         message: "Password is incorrect",
       });
@@ -87,6 +103,7 @@ const loginController = async (req, res) => {
     });
   } catch (error) {
     console.log(error);
+    console.log("login error", error.message);
     res.status(500).send({
       success: false,
       message: "Error in login API",
