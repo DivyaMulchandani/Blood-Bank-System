@@ -5,6 +5,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 const connectDB = require("./config/db");
 const path = require("path");
+const allowedOrigins = require("./config/allowedOrigins");
 
 //dot config
 dotenv.config();
@@ -17,7 +18,12 @@ const app = express();
 
 //middlewares
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: allowedOrigins,
+    credentials: true, // If you need to allow credentials (like cookies)
+  })
+);
 app.use(morgan("dev"));
 
 //routes
