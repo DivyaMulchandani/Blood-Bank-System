@@ -1,0 +1,38 @@
+.slidebar {
+  height: 100vh !important;
+  /* border-radius: 5px; */
+  background-color: rgb(52, 48, 48);
+  box-shadow: 0 0 2px gray;
+  color: antiquewhite;
+}
+
+.menu {
+  padding-top: 100px;
+}
+
+.menu-item {
+  padding-top: 20px;
+}
+
+.menu-item a {
+  color: antiquewhite;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.menu-item i {
+  font-size: 1.2rem;
+  margin: 0 15px;
+  color: antiquewhite;
+}
+
+.active {
+  background-color: antiquewhite;
+  padding: 10px;
+  margin-top: 25px;
+}
+
+.active a,
+.active i {
+  color: rgb(52, 48, 48);
+}
