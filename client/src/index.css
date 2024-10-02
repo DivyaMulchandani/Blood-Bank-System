@@ -152,18 +152,27 @@ Navigation bar
 }
 
 /* //add inventory button */
-
+/* .container {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center; 
+  padding: 20px;
+} */
 .add-inventory-btn {
   display: inline-block;
-  background-color: #c8e6c9; /* Light blue background */
+  background-color: #c8e6c9;
   color: #2e7d32;
-  font-size: 1rem; /* Smaller font size */
+  font-size: 1rem;
   font-weight: 500;
   padding: 0rem 1rem;
-  border-radius: 20px; /* Rounded corners */
+  border-radius: 25px;
   transition: transform 0.3s ease, background-color 0.3s ease;
   cursor: pointer;
   text-align: center;
+  margin-top: 30px;
+  /* position: absolute;
+  right: 20px; */
+  /* height: 40px; */
 }
 
 .add-inventory-btn i {

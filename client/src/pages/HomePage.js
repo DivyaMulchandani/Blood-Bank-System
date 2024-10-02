@@ -37,7 +37,6 @@ const HomePage = () => {
         <Spinner />
       ) : (
         <>
-          <h1>Home Page</h1>
           <div className="container">
             <h4
               className="add-inventory-btn ms-4"
