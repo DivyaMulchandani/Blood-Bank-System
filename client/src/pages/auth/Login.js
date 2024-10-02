@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Form from "../../components/shared/Form/Form1";
 import { useSelector } from "react-redux";
 import Spinner from "./../../components/shared/Spinner";
@@ -6,9 +6,14 @@ import { toast } from "react-toastify";
 
 const Login = () => {
   const { loading, error } = useSelector((state) => state.auth);
+  useEffect(() => {
+    if (error) {
+      toast.error(error);
+    }
+  }, [error]);
   return (
     <div>
-      {error && <span>{toast.error(error)}</span>}
+      {/* {error && <span>{toast.error(error)}</span>} */}
 
       {loading ? (
         <Spinner />
